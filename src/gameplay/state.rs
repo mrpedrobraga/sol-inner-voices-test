@@ -9,7 +9,7 @@ use bevy::ecs::schedule::States;
 /// The player will be in the beautiful turn-based battle system we all love.
 #[derive(Default, States, Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum GameplayState {
-    #[default]
     Overworld,
+    #[default]
     Battle,
 }
