@@ -7,7 +7,8 @@ use gameplay::InnerVoicesPlugin;
 
 fn main() {
     App::new()
-        .add_plugins((DefaultPlugins, InnerVoicesPlugin))
+        .add_plugins(DefaultPlugins)
+        .add_plugins(InnerVoicesPlugin)
         .add_plugins(WorldInspectorPlugin::new())
         .run();
 }

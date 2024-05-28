@@ -1,0 +1,19 @@
+// Static tasks configuration.
+[
+  {
+    // Runs program in debug mode
+    "label": "Debug Game",
+    "command": "cargo run -p game",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always"
+  },
+  {
+    // Runs program in release mode
+    "label": "Run Game",
+    "command": "cargo run --release -p game",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always"
+  }
+]
