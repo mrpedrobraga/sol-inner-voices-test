@@ -1,6 +1,6 @@
 [workspace]
 
-members = ["crates/game"]
+members = [ "crates/aster","crates/game"]
 resolver = "1"
 
 # Enable max optimizations for dependencies, but not for our code:

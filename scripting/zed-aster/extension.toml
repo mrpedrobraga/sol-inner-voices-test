@@ -1,0 +1,11 @@
+id = "aster"
+name = "Aster"
+version = "0.0.1"
+schema_version = 1
+authors = ["mrpedrobraga <mrhenribraga@gmail.com>"]
+description = "Aster support."
+repository = "https://github.com/mrpedrobraga/my-zed-extension"
+
+[grammars.aster]
+repository = "https://github.com/mrpedrobraga/tree-sitter-aster.git"
+commit = "a3774d496a13094f7175a96e9cece5191c62978c"
