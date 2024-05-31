@@ -27,6 +27,8 @@ impl LanguageServer for Backend {
         Ok(InitializeResult {
             capabilities: ServerCapabilities {
                 code_action_provider: Some(CodeActionProviderCapability::Simple(true)),
+                hover_provider: Some(HoverProviderCapability::Simple(true)),
+
                 ..Default::default()
             },
             server_info: Default::default(),
@@ -47,32 +49,32 @@ impl LanguageServer for Backend {
     }
 
     async fn code_action(&self, _: CodeActionParams) -> Result<Option<CodeActionResponse>> {
-        let caa = CodeActionOrCommand::CodeAction(CodeAction {
-            title: ("Test Edit").into(),
-            kind: Some(CodeActionKind::REFACTOR),
-            diagnostics: None,
-            edit: Some(WorkspaceEdit {
-                changes: None,
-                document_changes: None,
-                change_annotations: None,
-            }),
-            command: None,
-            is_preferred: Some(false),
-            disabled: None,
-            data: None,
-        });
-
         let ca: CodeActionResponse = vec![
-            caa,
-            code_action!("Insert meaning of life before the current symbol"),
-            code_action!("Generate boyfriend"),
-            code_action!("Finish Game"),
-            code_action!("Call ThePrimeagen to react to yet another new language"),
-            code_action!("Call Theo but he won't like it cuz it's not JS"),
-            code_action!("Stop making jokes and begin making stuff"),
+            code_action!("New scene"),
+            code_action!("Extract to new function"),
+            code_action!("Move to new file..."),
+            code_action!("Generate Game"),
+            code_action!("Call Nicolas Petton"),
+            code_action!("Generate Boyfriend"),
+            code_action!("Discover meaning of life"),
         ];
 
         Ok(Some(ca))
+    }
+
+    async fn hover(&self, params: HoverParams) -> Result<Option<Hover>> {
+        return Ok(None);
+
+        Ok(Some(Hover {
+            contents: HoverContents::Markup(MarkupContent {
+                kind: MarkupKind::Markdown,
+                value: include_str!("./example_hover.md").into(),
+            }),
+            range: Some(Range {
+                start: Position::new(5, 0),
+                end: Position::new(5, 27),
+            }),
+        }))
     }
 }
 

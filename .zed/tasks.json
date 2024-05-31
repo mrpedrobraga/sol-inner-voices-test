@@ -15,5 +15,13 @@
     "use_new_terminal": false,
     "allow_concurrent_runs": false,
     "reveal": "always"
+  },
+  {
+    "label": "Build Aster LS",
+    "cwd": "/run/media/mrpedrobraga/HDD1/DEV/project_a_game/scripting/asterls",
+    "command": "cargo build",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always"
   }
 ]
