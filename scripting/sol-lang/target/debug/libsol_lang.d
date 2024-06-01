@@ -1,0 +1,1 @@
+/run/media/mrpedrobraga/HDD1/DEV/project_a_game/scripting/sol-lang/target/debug/libsol_lang.rlib: /run/media/mrpedrobraga/HDD1/DEV/project_a_game/scripting/sol-lang/src/introspec/mod.rs /run/media/mrpedrobraga/HDD1/DEV/project_a_game/scripting/sol-lang/src/introspec/project.rs /run/media/mrpedrobraga/HDD1/DEV/project_a_game/scripting/sol-lang/src/lib.rs

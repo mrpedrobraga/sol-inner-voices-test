@@ -1,7 +1,8 @@
-use serde::{Deserialize, Serialize};
+pub mod build;
+pub mod init;
 
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Workspace {}
-
-#[derive(Debug, Serialize, Deserialize)]
-pub struct Module {}
+#[derive(Error, Debug, Diagnostic)]
+#[error(transparent)]
+enum CliError {
+    IO(#[from] std::io::Error),
+}
