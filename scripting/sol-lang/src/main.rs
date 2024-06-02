@@ -1,21 +1,34 @@
 #![allow(unused)]
-use clap::{Parser, Subcommand};
-use miette::Diagnostic;
+use clap::{CommandFactory, Parser, Subcommand};
+use miette::{Diagnostic, IntoDiagnostic};
+use sol_lang::workspace::{self, BuildArgs, InitArgs, WorkspaceError};
 use std::path::PathBuf;
 use thiserror::Error;
 
 // Usage: `sol <arguments>`
-fn main() -> Result<(), CliError> {
+fn main() -> miette::Result<()> {
     let args = CliArgs::parse();
 
     match args.command {
-        PrimaryAction::Init { path } => {
-            let dir = path.unwrap_or(std::env::current_dir()?);
-            workspace::init(dir)?;
+        PrimaryAction::Init(args) => {
+            let path = args
+                .path
+                .unwrap_or(std::env::current_dir().into_diagnostic()?);
+            workspace::init(path).map_err(WorkspaceError::Init)?;
         }
-        PrimaryAction::Build { path, watch } => {
-            let dir = path.unwrap_or(std::env::current_dir()?);
-            workspace::build(dir)?;
+        PrimaryAction::Build(args) => {
+            let dir = args
+                .path
+                .unwrap_or(std::env::current_dir().into_diagnostic()?);
+            workspace::build(dir).map_err(WorkspaceError::Build)?;
+        }
+        PrimaryAction::Test => Err(Unimplemented)?,
+        PrimaryAction::Clean => Err(Unimplemented)?,
+        PrimaryAction::Migrate => Err(Unimplemented)?,
+        PrimaryAction::Add => Err(Unimplemented)?,
+        PrimaryAction::Remove => Err(Unimplemented)?,
+        PrimaryAction::Completions { shell } => {
+            shell.generate(&mut CliArgs::command(), &mut std::io::stdout())
         }
     }
 
@@ -29,22 +42,48 @@ fn main() -> Result<(), CliError> {
     version
 )]
 struct CliArgs {
+    /// What action to execute on the workspace.
     #[command(subcommand)]
     command: PrimaryAction,
 }
 
 #[derive(Debug, Subcommand)]
 enum PrimaryAction {
-    Init {
-        // If unspecified, use CWD.
-        path: Option<PathBuf>,
-    },
-    Build {
-        // Override of the workspace path to be built.
-        // Defaults to the CWD.
-        path: Option<PathBuf>,
+    /// Initialize a new workspace on a directory.
+    Init(InitArgs),
+    /// Build an existing workspace's assets, so that they can be imported in an app.
+    Build(BuildArgs),
+    /// Runs the internal tests availabe in the library.
+    Test,
+    /// Cleans the build artifacts generated in a build, freeing memory.
+    Clean,
 
-        #[arg(short, long)]
-        watch: bool,
-    },
+    /// Applies a migration file to your repository, transforming your assets if necessary.
+    Migrate,
+
+    /// Adds a new library dependency to the workspace.
+    Add,
+    /// Removes a previously added dependency from the workspace.
+    Remove,
+
+    /// Query completions for the given shell.
+    Completions { shell: clap_complete_command::Shell },
+}
+
+#[derive(Error, Debug, Diagnostic)]
+#[error(transparent)]
+pub enum CliError {
+    IO(#[from] std::io::Error),
+    Workspace(#[from] WorkspaceError),
+    Unimplemented(Unimplemented),
+}
+
+#[derive(Error, Debug, Diagnostic)]
+#[error("This feature is not yet implemented.")]
+pub struct Unimplemented;
+
+#[test]
+fn verify_cli() {
+    use clap::CommandFactory;
+    CliArgs::command().debug_assert()
 }

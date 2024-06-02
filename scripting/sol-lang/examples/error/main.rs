@@ -36,7 +36,7 @@ fn main() -> Result<()> {
     Err(OopsieDoopsie {
         src: NamedSource::new("./faulty.sol", source),
         at: (30, 4).into(),
-        disallow_span: vec![(0, 23).into()],
+        disallow_span: vec![(0, 23).into(), (25, 3).into()],
     })?;
 
     Ok(())

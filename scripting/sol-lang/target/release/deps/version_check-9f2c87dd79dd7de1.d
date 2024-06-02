@@ -1,0 +1,10 @@
+/run/media/mrpedrobraga/HDD1/DEV/project_a_game/scripting/sol-lang/target/release/deps/libversion_check-9f2c87dd79dd7de1.rmeta: /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/lib.rs /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/version.rs /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/channel.rs /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/date.rs
+
+/run/media/mrpedrobraga/HDD1/DEV/project_a_game/scripting/sol-lang/target/release/deps/libversion_check-9f2c87dd79dd7de1.rlib: /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/lib.rs /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/version.rs /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/channel.rs /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/date.rs
+
+/run/media/mrpedrobraga/HDD1/DEV/project_a_game/scripting/sol-lang/target/release/deps/version_check-9f2c87dd79dd7de1.d: /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/lib.rs /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/version.rs /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/channel.rs /home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/date.rs
+
+/home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/lib.rs:
+/home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/version.rs:
+/home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/channel.rs:
+/home/mrpedrobraga/.cargo/registry/src/index.crates.io-6f17d22bba15001f/version_check-0.9.4/src/date.rs:
